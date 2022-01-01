@@ -1,0 +1,25 @@
+{
+  "name": "hyper-holoplay",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "index.js",
+  "keywords": [
+    "hyper",
+    "hyper.app",
+    "hyper-plugin",
+    "holoplay",
+    "looking-glass"
+  ],
+  "description": "Holoplay integration for Hyper",
+  "author": {
+    "name": "Takuya Matsuyama",
+    "url": "https://www.craftz.dog/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/craftzdog/hyper-holoplay.git"
+  },
+  "dependencies": {
+    "holoplay": "^1.0.3"
+  }
+}
