@@ -56,6 +56,11 @@ exports.run = () => {
   // add the renderer's canvas to your web page (it will size to fill the page)
   document.body.appendChild(renderer.domElement)
 
+  // set focus to the terminal on clicking the threejs canvas
+  renderer.domElement.addEventListener('click', () => {
+    document.querySelector('.xterm-helper-textarea').focus()
+  })
+
   // the update function gets called every frame, thanks to requestAnimationFrame()
   function update(time) {
     requestAnimationFrame(update)
@@ -65,10 +70,7 @@ exports.run = () => {
     //plane.rotation.y += 0.01
     // render() draws the scene, just like THREE.WebGLRenderer.render()
     renderer.render(scene, camera)
-    document.querySelector('.xterm-helper-textarea').focus()
   }
   requestAnimationFrame(update)
-
-  document.querySelector('.xterm-helper-textarea').focus()
 }
 
