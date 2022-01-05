@@ -21,5 +21,8 @@
   },
   "dependencies": {
     "holoplay": "^1.0.3"
+  },
+  "devDependencies": {
+    "prettier": "^2.5.1"
   }
 }
