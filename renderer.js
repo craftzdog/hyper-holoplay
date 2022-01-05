@@ -1,4 +1,4 @@
-const THREE = global.THREE = require('three')
+const THREE = (global.THREE = require('three'))
 const HoloPlay = require('holoplay')
 
 function createCanvasSurface(scene, canvas, zoff = 0) {
@@ -29,11 +29,9 @@ function createCanvasSurface(scene, canvas, zoff = 0) {
   }
 }
 
-exports.run = () => {
-  console.log('RUN')
+exports.init = divTerm => {
   // just a basic three.js scene, nothing special
   const scene = new THREE.Scene()
-  //scene.add(new THREE.GridHelper(10, 10))
 
   // adding some lights to the scene
   const directionalLight = new THREE.DirectionalLight(0xffffff, 1)
@@ -42,8 +40,15 @@ exports.run = () => {
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.4)
   scene.add(ambientLight)
 
-  const term = createCanvasSurface(scene, document.querySelector('.xterm-text-layer'))
-  const cursor = createCanvasSurface(scene, document.querySelector('.xterm-cursor-layer'), 0.01)
+  const term = createCanvasSurface(
+    scene,
+    divTerm.querySelector('.xterm-text-layer')
+  )
+  const cursor = createCanvasSurface(
+    scene,
+    divTerm.querySelector('.xterm-cursor-layer'),
+    0.01
+  )
 
   // the holoplay camera should be used like a THREE.PerspectiveCamera
   const camera = new HoloPlay.Camera()
@@ -58,19 +63,17 @@ exports.run = () => {
 
   // set focus to the terminal on clicking the threejs canvas
   renderer.domElement.addEventListener('click', () => {
-    document.querySelector('.xterm-helper-textarea').focus()
+    divTerm.querySelector('.xterm-helper-textarea').focus()
   })
 
-  // the update function gets called every frame, thanks to requestAnimationFrame()
-  function update(time) {
-    requestAnimationFrame(update)
-
-    term.texture.needsUpdate = true
-    cursor.texture.needsUpdate = true
-    //plane.rotation.y += 0.01
-    // render() draws the scene, just like THREE.WebGLRenderer.render()
-    renderer.render(scene, camera)
-  }
-  requestAnimationFrame(update)
+  return { renderer, term, cursor, scene, camera }
 }
 
+exports.update = holo => {
+  const { renderer, term, cursor, scene, camera } = holo
+
+  term.texture.needsUpdate = true
+  cursor.texture.needsUpdate = true
+  //plane.rotation.y += 0.01
+  renderer.render(scene, camera)
+}
