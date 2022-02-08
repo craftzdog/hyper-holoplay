@@ -15,7 +15,7 @@ A Holoplay integration for Hyper and [Looking Glass](https://lookingglassfactory
 1. Clone this repository
 2. run `npm install`
 3. Symlink the root directory to `~/.hyper_plugins/local/`
-4. Add `'hyper-holoplay` to `localPlugins` in `~/.hyper.js`.
+4. Add `'hyper-holoplay'` to `localPlugins` in `~/.hyper.js`.
 
 ## License
 
