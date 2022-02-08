@@ -1,7 +1,7 @@
 hyper-holoplay
 ==========================
 
-![screenshot](./doc/screenshot.jpg)
+[![screenshot](./doc/screenshot.jpg)](https://youtu.be/y6mRqhR49aI)
 
 A Holoplay integration for Hyper and [Looking Glass](https://lookingglassfactory.com/) using [Holoplay.js](https://docs.lookingglassfactory.com/developer-tools/three) and [Three.js](https://threejs.org/).
 
@@ -12,7 +12,10 @@ A Holoplay integration for Hyper and [Looking Glass](https://lookingglassfactory
 
 ## How to use
 
-Install [Hyper](https://hyper.is) and add `hyper-holoplay` to `plugins` in `~/.hyper.js`.
+1. Clone this repository
+2. run `npm install`
+3. Symlink the root directory to `~/.hyper_plugins/local/`
+4. Add `'hyper-holoplay` to `localPlugins` in `~/.hyper.js`.
 
 ## License
 
